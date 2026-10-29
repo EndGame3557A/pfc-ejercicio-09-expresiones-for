@@ -14,18 +14,18 @@ class Ejercicio {
   // Si s se lee igual al revés, sin distinguir mayúsculas y sin contar
   // los espacios.
   def esPalindromo(s: String): Boolean = {
-    s.filter
+    s.filter(c => !" ".contains(c)).equals(s.filter(c => !" ".contains(c)).reverse)
   }
 
   // La suma de los múltiplos de k entre 1 y n, ambos incluidos. k >= 1.
   def sumaMultiplos(n: Int, k: Int): Int = {
-    0 // Completar
+    (1 to n).filter(_ % k == 0).sum
   }
 
   // Si xs está en orden ascendente; los repetidos y el vector vacío cuentan
   // como ordenados.
   def estaOrdenado(xs: Vector[Int]): Boolean = {
-    false // Completar
+    xs.isEmpty || (1 until xs.length).forall(i => xs(i) >= xs(i - 1))
   }
 
   // Punto 2. flatMap: una colección por cada elemento, aplanadas.
