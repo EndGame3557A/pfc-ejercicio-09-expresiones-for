@@ -14,7 +14,8 @@ class Ejercicio {
   // Si s se lee igual al revés, sin distinguir mayúsculas y sin contar
   // los espacios.
   def esPalindromo(s: String): Boolean = {
-    s.filter(c => !" ".contains(c)).equals(s.filter(c => !" ".contains(c)).reverse)
+    val limpia = s.toLowerCase.filter(c => c != ' ')
+    limpia == limpia.reverse
   }
 
   // La suma de los múltiplos de k entre 1 y n, ambos incluidos. k >= 1.
@@ -29,17 +30,16 @@ class Ejercicio {
   }
 
   // Punto 2. flatMap: una colección por cada elemento, aplanadas.
-
   // Todas las parejas (i, j) con 1 <= i < j <= n, ordenadas por i y luego
   // por j.
   def parejas(n: Int): List[(Int, Int)] = {
-    List() // Completar
+    (1 to n).flatMap(i => (i + 1 to n).map(j => (i, j))).toList
   }
 
   // Cada número de xs repetido tantas veces como su valor, en el mismo
   // orden; el cero y los negativos no aparecen.
   def expandir(xs: List[Int]): List[Int] = {
-    List() // Completar
+    xs.filter(_ > 0).flatMap(x => List.fill(x)(x))
   }
 
   // Punto 3. La misma función dos veces: con for y con flatMap, map y filter.
